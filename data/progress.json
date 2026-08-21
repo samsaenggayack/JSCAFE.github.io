@@ -1,0 +1,22 @@
+[
+  {
+    "title": "1차 수요조사",
+    "done": true
+  },
+  {
+    "title": "협력물 공개",
+    "done": false
+  },
+  {
+    "title": "예약폼 공개",
+    "done": false
+  },
+  {
+    "title": "상세 장소 공개",
+    "done": false
+  },
+  {
+    "title": "행사 개최",
+    "done": false
+  }
+]
