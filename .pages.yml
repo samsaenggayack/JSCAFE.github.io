@@ -1,0 +1,173 @@
+media:
+  input: assets/uploads
+  output: assets/uploads
+  rename: safe
+  categories:
+  - image
+settings:
+  hide: true
+  content:
+    merge: true
+content:
+- name: site
+  label: 사이트 설정
+  type: file
+  path: data/site.json
+  format: json
+  operations:
+    delete: false
+  fields:
+  - name: siteTitle
+    label: 사이트 제목
+    type: string
+    required: true
+  - name: siteSubtitle
+    label: 사이트 부제
+    type: string
+  - name: browserTitle
+    label: 브라우저 탭 제목
+    type: string
+  - name: contactEmail
+    label: 문의 이메일
+    type: string
+    required: true
+    description: 챗봇이 답을 찾지 못했을 때 표시되는 이메일입니다.
+  - name: heroImage
+    label: 상단 배경 이미지
+    type: image
+    required: true
+    options:
+      extensions:
+      - jpg
+      - jpeg
+      - png
+      - webp
+      rename: safe
+  - name: accentColor
+    label: 기본 포인트 색상
+    type: string
+    description: '예시: #9994c9'
+  - name: accentDark
+    label: 진한 포인트 색상
+    type: string
+    description: '예시: #6f6a9e'
+  - name: backgroundColor
+    label: 페이지 배경 색상
+    type: string
+    description: '예시: #f7f6f4'
+  - name: heroHeight
+    label: 상단 배경 높이(px)
+    type: number
+  - name: main
+    label: 메인 화면
+    type: object
+    fields:
+    - name: eyebrow
+      label: 작은 문구
+      type: string
+    - name: title
+      label: 메인 제목
+      type: string
+      required: true
+    - name: description
+      label: 메인 설명
+      type: text
+    - name: noticeTitle
+      label: 메인 공지 제목
+      type: string
+    - name: noticeText
+      label: 메인 공지 내용
+      type: text
+- name: posts
+  label: 공지 / 게시물
+  type: file
+  path: data/posts.json
+  format: json
+  list: true
+  operations:
+    delete: false
+  fields:
+  - name: type
+    label: 분류
+    type: string
+    required: true
+  - name: title
+    label: 제목
+    type: string
+    required: true
+  - name: date
+    label: 날짜
+    type: date
+    required: true
+    options:
+      format: yyyy-MM-dd
+  - name: body
+    label: 내용
+    type: text
+- name: faq
+  label: Q&A
+  type: file
+  path: data/faq.json
+  format: json
+  list: true
+  operations:
+    delete: false
+  fields:
+  - name: category
+    label: 카테고리
+    type: string
+    required: true
+  - name: question
+    label: 질문
+    type: string
+    required: true
+  - name: answer
+    label: 답변
+    type: text
+    required: true
+  - name: keywords
+    label: 챗봇 검색 키워드
+    type: string
+    list: true
+    description: 이 단어를 포함한 질문이 들어오면 해당 Q&A를 찾기 쉬워집니다.
+- name: members
+  label: 참여진
+  type: file
+  path: data/members.json
+  format: json
+  list: true
+  operations:
+    delete: false
+  fields:
+  - name: role
+    label: 역할
+    type: string
+  - name: name
+    label: 이름
+    type: string
+    required: true
+  - name: desc
+    label: 소개
+    type: text
+- name: schedule
+  label: 일정
+  type: file
+  path: data/schedule.json
+  format: json
+  list: true
+  operations:
+    delete: false
+  fields:
+  - name: date
+    label: 날짜
+    type: date
+    required: true
+    options:
+      format: yyyy-MM-dd
+  - name: title
+    label: 일정 제목
+    type: string
+    required: true
+  - name: desc
+    label: 일정 설명
+    type: text
