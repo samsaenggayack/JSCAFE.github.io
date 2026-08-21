@@ -117,29 +117,45 @@ function chat(){
 }
 
 function renderDday(){
-  const raw=String(DATA?.site?.eventDate||"2027-12-17").trim();
+  const startRaw=String(DATA?.site?.eventDate||"2027-12-18").trim();
+  const endRaw=String(DATA?.site?.eventEndDate||"2027-12-19").trim();
   const countEl=document.getElementById("ddayCount");
   const dateEl=document.getElementById("ddayDate");
+  const noteEl=document.getElementById("ddayNote");
   if(!countEl || !dateEl) return;
 
-  const m=raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if(!m){
+  const parseDate=value=>{
+    const m=String(value||"").match(/^(\\d{4})-(\\d{2})-(\\d{2})$/);
+    if(!m) return null;
+    return {y:Number(m[1]),m:Number(m[2]),d:Number(m[3])};
+  };
+  const start=parseDate(startRaw),end=parseDate(endRaw);
+
+  if(!start){
     countEl.textContent="날짜 미정";
-    dateEl.textContent=raw || "미정";
+    dateEl.textContent=startRaw||"미정";
+    if(noteEl) noteEl.textContent="";
     return;
   }
 
-  const y=Number(m[1]), mo=Number(m[2]), d=Number(m[3]);
-  const target=Date.UTC(y,mo-1,d);
+  const startUtc=Date.UTC(start.y,start.m-1,start.d);
+  const endDate=end||start;
+  const endUtc=Date.UTC(endDate.y,endDate.m-1,endDate.d);
   const now=new Date();
   const today=Date.UTC(now.getFullYear(),now.getMonth(),now.getDate());
-  const diff=Math.round((target-today)/86400000);
+  const untilStart=Math.round((startUtc-today)/86400000);
 
-  if(diff>0) countEl.textContent=`D-${diff}`;
-  else if(diff===0) countEl.textContent="D-DAY";
-  else countEl.textContent=`D+${Math.abs(diff)}`;
+  if(today<startUtc) countEl.textContent=`D-${untilStart}`;
+  else if(today===startUtc) countEl.textContent="D-DAY";
+  else if(today<=endUtc) countEl.textContent=`DAY ${Math.round((today-startUtc)/86400000)+1}`;
+  else countEl.textContent="CLOSED";
 
-  dateEl.textContent=`${m[1]}.${m[2]}.${m[3]}`;
+  const sy=String(start.y),sm=String(start.m).padStart(2,"0"),sd=String(start.d).padStart(2,"0");
+  const ey=String(endDate.y),em=String(endDate.m).padStart(2,"0"),ed=String(endDate.d).padStart(2,"0");
+  dateEl.textContent=(start.y===endDate.y && start.m===endDate.m)
+    ? `${sy}.${sm}.${sd} — ${em}.${ed}`
+    : `${sy}.${sm}.${sd} — ${ey}.${em}.${ed}`;
+  if(noteEl) noteEl.textContent="三生佳約 · 2 DAYS";
 }
 
 function init(){

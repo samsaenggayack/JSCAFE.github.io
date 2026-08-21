@@ -1197,3 +1197,19 @@ h1 {
     display: none;
   }
 }
+
+
+/* 행사기간형 D-DAY 보조 문구 */
+.dday-note {
+  margin-top: 5px;
+  color: #9a7b39;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .10em;
+}
+
+@media (max-width: 800px) {
+  .dday-note {
+    display: none;
+  }
+}
