@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap");
+
 /* =========================================================
    三生佳約 사이트 디자인 설정
    보통은 맨 위 :root 부분만 수정하면 됩니다.
@@ -31,7 +33,7 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   color: var(--ink);
-  font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   background:
     radial-gradient(circle at 12% 25%, rgba(181,205,230,.16), transparent 26%),
     radial-gradient(circle at 85% 70%, rgba(235,210,150,.13), transparent 25%),
@@ -96,7 +98,7 @@ button { cursor: pointer; }
 
 .side-title {
   text-align: center;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Noto Sans KR", sans-serif;
   letter-spacing: .1em;
   font-size: 15px;
   margin: 0 0 7px;
@@ -136,6 +138,8 @@ button { cursor: pointer; }
   display: inline-block;
   width: 24px;
   color: var(--lav);
+  font-weight: 600;
+  text-align: center;
 }
 
 .side-line {
@@ -230,7 +234,7 @@ button { cursor: pointer; }
 }
 
 h1 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 28px;
   font-weight: 500;
   letter-spacing: .03em;
@@ -264,7 +268,7 @@ h1 {
 }
 
 .notice h3 {
-  font-family: Georgia, serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 500;
   margin: 0 0 9px;
 }
@@ -307,7 +311,7 @@ h1 {
 
 .quick b {
   display: block;
-  font-family: Georgia, serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 15px;
   margin-bottom: 5px;
 }
@@ -321,7 +325,7 @@ h1 {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: Georgia, serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 17px;
   margin: 4px 0 15px;
 }
@@ -444,7 +448,7 @@ h1 {
 }
 
 .member h3 {
-  font-family: Georgia, serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 16px;
   font-weight: 500;
   margin: 8px 0 6px;
@@ -491,7 +495,7 @@ h1 {
 }
 
 .event .when {
-  font-family: Georgia, serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 12px;
   color: var(--lav-dark);
   letter-spacing: .04em;
@@ -552,17 +556,18 @@ h1 {
   right: 24px;
   bottom: 24px;
   z-index: 20;
-  min-width: 72px;
-  height: 48px;
-  padding: 0 18px;
+  width: 58px;
+  height: 58px;
+  padding: 0;
   border: 1px solid rgba(216,187,115,.48);
-  border-radius: 999px;
+  border-radius: 50%;
   background: linear-gradient(135deg, rgba(236,242,253,.97), rgba(255,246,222,.97));
   color: var(--lav-dark);
   box-shadow: 0 12px 32px rgba(73,92,135,.18);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .08em;
+  font-size: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .chatbox {
@@ -600,7 +605,7 @@ h1 {
 }
 
 .chat-head b {
-  font-family: Georgia, serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 500;
 }
 
@@ -772,4 +777,52 @@ h1 {
 }
 .nav button.active {
   box-shadow: inset 2px 0 0 var(--lav);
+}
+
+
+/* Noto Sans KR typography tuning */
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+.side-title,
+h1,
+.notice h3,
+.quick b,
+.section-title,
+.member h3,
+.chat-head b {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.side-title {
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+h1 {
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.nav button {
+  font-weight: 500;
+}
+
+.notice h3,
+.quick b,
+.member h3,
+.chat-head b {
+  font-weight: 600;
+}
+
+.lead,
+.faq-a,
+.member p,
+.event p,
+.result p,
+.contact-mini {
+  letter-spacing: -0.02em;
 }
