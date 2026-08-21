@@ -1484,3 +1484,10 @@ h1 {
     font-size: 18px;
   }
 }
+
+
+/* 주요 공지 오른쪽 별 장식 제거 */
+.notice::before {
+  content: none !important;
+  display: none !important;
+}
