@@ -46,11 +46,11 @@ content:
   - name: accentColor
     label: 기본 포인트 색상
     type: string
-    description: '예시: #9994c9'
+    description: '예시: #c5a35c (금색)'
   - name: accentDark
     label: 진한 포인트 색상
     type: string
-    description: '예시: #6f6a9e'
+    description: '예시: #8f6b2f (진한 금갈색)'
   - name: backgroundColor
     label: 페이지 배경 색상
     type: string
@@ -78,6 +78,30 @@ content:
     - name: noticeText
       label: 메인 공지 내용
       type: text
+    - name: quickFaqTitle
+      label: 메인 카드 1 제목
+      type: string
+      description: 자주 묻는 질문 카드의 제목
+    - name: quickFaqDescription
+      label: 메인 카드 1 설명
+      type: text
+      description: 자주 묻는 질문 카드 아래 설명
+    - name: quickMembersTitle
+      label: 메인 카드 2 제목
+      type: string
+      description: 협력물 카드의 제목
+    - name: quickMembersDescription
+      label: 메인 카드 2 설명
+      type: text
+      description: 협력물 카드 아래 설명
+    - name: quickScheduleTitle
+      label: 메인 카드 3 제목
+      type: string
+      description: 일정 카드의 제목
+    - name: quickScheduleDescription
+      label: 메인 카드 3 설명
+      type: text
+      description: 일정 카드 아래 설명
 - name: posts
   label: 공지 / 게시물
   type: file

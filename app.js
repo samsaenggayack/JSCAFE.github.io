@@ -35,6 +35,12 @@ function site(){
   mainDescription.textContent=C.main?.description||"";
   noticeTitle.textContent=C.main?.noticeTitle||"";
   noticeText.textContent=C.main?.noticeText||"";
+  quickFaqTitle.textContent=C.main?.quickFaqTitle||"자주 묻는 질문";
+  quickFaqDescription.textContent=C.main?.quickFaqDescription||"카페 이용과 방문에 관한 자주 묻는 질문을 확인합니다.";
+  quickMembersTitle.textContent=C.main?.quickMembersTitle||"협력물";
+  quickMembersDescription.textContent=C.main?.quickMembersDescription||"카페와 함께하는 협력 및 참여 정보를 확인합니다.";
+  quickScheduleTitle.textContent=C.main?.quickScheduleTitle||"일정";
+  quickScheduleDescription.textContent=C.main?.quickScheduleDescription||"카페 진행 일정과 중요한 날짜를 확인합니다.";
   footerText.textContent=`${C.siteTitle||""} · ARCHIVE`;
   if(C.accentColor) document.documentElement.style.setProperty("--lav",C.accentColor);
   if(C.accentDark) document.documentElement.style.setProperty("--lav-dark",C.accentDark);
@@ -70,7 +76,7 @@ function search(){
   if(q){
     DATA.posts.forEach(x=>{if(norm([x.type,x.title,x.date,x.body].join(" ")).includes(q))out.push({type:"NOTICE",title:x.title,text:x.body})});
     DATA.faq.forEach(x=>{const k=x.keywords||[],h=norm([x.category,x.question,x.answer,...k].join(" "));if(h.includes(q)||k.some(v=>q.includes(norm(v))))out.push({type:"Q&A",title:x.question,text:x.answer})});
-    DATA.members.forEach(x=>{if(norm([x.role,x.name,x.desc].join(" ")).includes(q))out.push({type:"MEMBER",title:x.name,text:`${x.role||""} · ${x.desc||""}`})});
+    DATA.members.forEach(x=>{if(norm([x.role,x.name,x.desc].join(" ")).includes(q))out.push({type:"협력물",title:x.name,text:`${x.role||""} · ${x.desc||""}`})});
     DATA.schedule.forEach(x=>{if(norm([x.date,x.title,x.desc].join(" ")).includes(q))out.push({type:"SCHEDULE",title:x.title,text:`${fmt(x.date)} · ${x.desc||""}`})});
   }
   searchSummary.textContent=raw?`"${raw}" 검색 결과 ${out.length}건`:"검색어를 입력해주세요.";
