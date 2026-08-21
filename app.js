@@ -125,7 +125,7 @@ function renderDday(){
   if(!countEl || !dateEl) return;
 
   const parseDate=value=>{
-    const m=String(value||"").match(/^(\\d{4})-(\\d{2})-(\\d{2})$/);
+    const m=String(value||"").match(/^(\d{4})-(\d{2})-(\d{2})$/);
     if(!m) return null;
     return {y:Number(m[1]),m:Number(m[2]),d:Number(m[3])};
   };
