@@ -1,7 +1,7 @@
 {
   "siteTitle": "三生佳約",
   "siteSubtitle": "Information & Archive",
-  "browserTitle": "三生佳約 · 안내 페이지",
+  "browserTitle": "三生佳約 ",
   "contactEmail": "2027jscafe@gmail.com",
   "heroImage": "assets/uploads/header.png",
   "accentColor": "#8398c9",
@@ -9,10 +9,10 @@
   "backgroundColor": "#f7f6f4",
   "heroHeight": 330,
   "main": {
-    "eyebrow": "Welcome",
-    "title": "三生佳約 안내 페이지",
-    "description": "2027년 12월 진행 예정인 카페의 공지, 자주 묻는 질문, 협력물 및 일정을 확인할 수 있습니다.",
-    "noticeTitle": "✦ Main Notice",
+    "eyebrow": "공지사항",
+    "title": "三生佳約 공지사항",
+    "description": "2027년 12월 진행 예정인 카페의 공지, 자주 묻는 질문, 협력물 및 일정을 확인할 수 있습니다. 오른쪽 하단의 채팅을 통해 기존 문의에 대한 간단한 답변을 받을 수 있습니다.",
+    "noticeTitle": "주요 공지",
     "noticeText": "카페는 2027년 12월 17일부터 12월 19일까지 홍대 인근에서 진행될 예정입니다. 방문객 입장은 추후 날짜·타임별 예약 폼을 통해 사전 예약을 받은 뒤 예약자에 한해 진행할 예정입니다.",
     "quickFaqTitle": "자주 묻는 질문",
     "quickFaqDescription": "답변한 문의 내용 등을 확인할 수 있습니다.",
@@ -21,5 +21,5 @@
     "quickScheduleTitle": "일정",
     "quickScheduleDescription": "행사 진행 일정을 확인할 수 있습니다."
   },
-  "eventDate": "2027-12-17"
+  "eventDate": "2027-12-18"
 }
