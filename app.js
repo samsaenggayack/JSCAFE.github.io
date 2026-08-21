@@ -36,11 +36,18 @@ function site(){
   noticeTitle.textContent=C.main?.noticeTitle||"";
   noticeText.textContent=C.main?.noticeText||"";
   quickFaqTitle.textContent=C.main?.quickFaqTitle||"자주 묻는 질문";
-  quickFaqDescription.textContent=C.main?.quickFaqDescription||"카페 이용과 방문에 관한 자주 묻는 질문을 확인합니다.";
+  quickFaqDescription.textContent=C.main?.quickFaqDescription||"답변한 문의 내용 등을 확인할 수 있습니다.";
   quickMembersTitle.textContent=C.main?.quickMembersTitle||"협력물";
-  quickMembersDescription.textContent=C.main?.quickMembersDescription||"카페와 함께하는 협력 및 참여 정보를 확인합니다.";
+  quickMembersDescription.textContent=C.main?.quickMembersDescription||"협력진과 협력물을 확인할 수 있습니다.";
   quickScheduleTitle.textContent=C.main?.quickScheduleTitle||"일정";
-  quickScheduleDescription.textContent=C.main?.quickScheduleDescription||"카페 진행 일정과 중요한 날짜를 확인합니다.";
+  quickScheduleDescription.textContent=C.main?.quickScheduleDescription||"행사 진행 일정을 확인할 수 있습니다.";
+  if(document.getElementById("faqPageDescription")) faqPageDescription.textContent=C.main?.quickFaqDescription||"답변한 문의 내용 등을 확인할 수 있습니다.";
+  if(document.getElementById("membersPageDescription")) membersPageDescription.textContent=C.main?.quickMembersDescription||"협력진과 협력물을 확인할 수 있습니다.";
+  if(document.getElementById("schedulePageDescription")) schedulePageDescription.textContent=C.main?.quickScheduleDescription||"행사 진행 일정을 확인할 수 있습니다.";
+  if(document.getElementById("contactEmailLink")){
+    contactEmailLink.textContent=C.contactEmail||"";
+    contactEmailLink.href=`mailto:${C.contactEmail||""}`;
+  }
   footerText.textContent=`${C.siteTitle||""} · ARCHIVE`;
   if(C.accentColor) document.documentElement.style.setProperty("--lav",C.accentColor);
   if(C.accentDark) document.documentElement.style.setProperty("--lav-dark",C.accentDark);
@@ -68,8 +75,22 @@ function filters(){
 function members(){
   memberList.innerHTML=DATA.members.map(x=>`<div class="member"><div class="role">${esc(x.role)}</div><h3>${esc(x.name)}</h3><p>${esc(x.desc)}</p></div>`).join("");
 }
+
+function scheduleIsTbd(x){
+  return x?.dateStatus==="tbd" || x?.dateStatus==="미정" || !x?.date;
+}
+function scheduleLabel(x){
+  return scheduleIsTbd(x) ? "미정" : fmt(x.date);
+}
+function scheduleSortKey(x){
+  return scheduleIsTbd(x) ? "9999-99-99" : String(x.date||"");
+}
+
 function scheduleView(){
-  timeline.innerHTML=[...DATA.schedule].sort((a,b)=>String(a.date).localeCompare(String(b.date))).map(x=>`<div class="event"><div class="when">${esc(fmt(x.date))}</div><h3>${esc(x.title)}</h3><p>${esc(x.desc)}</p></div>`).join("");
+  timeline.innerHTML=[...DATA.schedule]
+    .sort((a,b)=>scheduleSortKey(a).localeCompare(scheduleSortKey(b)))
+    .map(x=>`<div class="event"><div class="when">${esc(scheduleLabel(x))}</div><h3>${esc(x.title)}</h3><p>${esc(x.desc)}</p></div>`)
+    .join("");
 }
 function search(){
   const raw=globalSearch.value.trim(),q=norm(raw),out=[];showView("search");
@@ -77,7 +98,7 @@ function search(){
     DATA.posts.forEach(x=>{if(norm([x.type,x.title,x.date,x.body].join(" ")).includes(q))out.push({type:"NOTICE",title:x.title,text:x.body})});
     DATA.faq.forEach(x=>{const k=x.keywords||[],h=norm([x.category,x.question,x.answer,...k].join(" "));if(h.includes(q)||k.some(v=>q.includes(norm(v))))out.push({type:"Q&A",title:x.question,text:x.answer})});
     DATA.members.forEach(x=>{if(norm([x.role,x.name,x.desc].join(" ")).includes(q))out.push({type:"협력물",title:x.name,text:`${x.role||""} · ${x.desc||""}`})});
-    DATA.schedule.forEach(x=>{if(norm([x.date,x.title,x.desc].join(" ")).includes(q))out.push({type:"SCHEDULE",title:x.title,text:`${fmt(x.date)} · ${x.desc||""}`})});
+    DATA.schedule.forEach(x=>{if(norm([x.date,x.dateStatus,x.title,x.desc,"미정"].join(" ")).includes(q))out.push({type:"일정",title:x.title,text:`${scheduleLabel(x)} · ${x.desc||""}`})});
   }
   searchSummary.textContent=raw?`"${raw}" 검색 결과 ${out.length}건`:"검색어를 입력해주세요.";
   searchResults.innerHTML=out.length?out.map(x=>`<div class="result"><div class="type">${esc(x.type)}</div><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></div>`).join(""):`<div class="empty">${raw?"일치하는 내용을 찾지 못했습니다.":"상단 검색창에 검색어를 입력해주세요."}</div>`;

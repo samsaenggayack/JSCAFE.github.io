@@ -5,8 +5,8 @@ window.FALLBACK_DATA = {
     "browserTitle": "三生佳約 · 안내 페이지",
     "contactEmail": "2027jscafe@gmail.com",
     "heroImage": "assets/uploads/header.png",
-    "accentColor": "#c5a35c",
-    "accentDark": "#8f6b2f",
+    "accentColor": "#8398c9",
+    "accentDark": "#566d9f",
     "backgroundColor": "#f7f6f4",
     "heroHeight": 330,
     "main": {
@@ -16,11 +16,11 @@ window.FALLBACK_DATA = {
       "noticeTitle": "✦ Main Notice",
       "noticeText": "카페는 2027년 12월 17일부터 12월 19일까지 홍대 인근에서 진행될 예정입니다. 방문객 입장은 추후 날짜·타임별 예약 폼을 통해 사전 예약을 받은 뒤 예약자에 한해 진행할 예정입니다.",
       "quickFaqTitle": "자주 묻는 질문",
-      "quickFaqDescription": "카페 이용과 방문에 관한 자주 묻는 질문을 확인합니다.",
+      "quickFaqDescription": "답변한 문의 내용 등을 확인할 수 있습니다.",
       "quickMembersTitle": "협력물",
-      "quickMembersDescription": "카페와 함께하는 협력 및 참여 정보를 확인합니다.",
+      "quickMembersDescription": "협력진과 협력물을 확인할 수 있습니다.",
       "quickScheduleTitle": "일정",
-      "quickScheduleDescription": "카페 진행 일정과 중요한 날짜를 확인합니다."
+      "quickScheduleDescription": "행사 진행 일정을 확인할 수 있습니다."
     }
   },
   "faq": [

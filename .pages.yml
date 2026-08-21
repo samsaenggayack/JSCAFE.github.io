@@ -46,11 +46,11 @@ content:
   - name: accentColor
     label: 기본 포인트 색상
     type: string
-    description: '예시: #c5a35c (금색)'
+    description: '예시: #8398c9 (푸른 포인트)'
   - name: accentDark
     label: 진한 포인트 색상
     type: string
-    description: '예시: #8f6b2f (진한 금갈색)'
+    description: '예시: #566d9f (진한 푸른색)'
   - name: backgroundColor
     label: 페이지 배경 색상
     type: string
@@ -155,7 +155,7 @@ content:
     list: true
     description: 이 단어를 포함한 질문이 들어오면 해당 Q&A를 찾기 쉬워집니다.
 - name: members
-  label: 참여진
+  label: 협력물
   type: file
   path: data/members.json
   format: json
@@ -182,10 +182,20 @@ content:
   operations:
     delete: false
   fields:
+  - name: dateStatus
+    label: 날짜 상태
+    type: select
+    description: 정확한 날짜를 모르면 ‘미정’을 선택하세요.
+    options:
+      values:
+      - name: confirmed
+        label: 날짜 확정
+      - name: tbd
+        label: 미정
   - name: date
     label: 날짜
     type: date
-    required: true
+    description: 날짜 상태가 ‘미정’이면 비워두어도 됩니다.
     options:
       format: yyyy-MM-dd
   - name: title

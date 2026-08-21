@@ -15,13 +15,13 @@
     <h2 class="side-title" id="siteTitle">三生佳約</h2>
     <div class="side-sub" id="siteSubtitle">Information & Archive</div>
     <nav class="nav">
-      <button class="active" data-view="home"><span class="symbol">覽</span> 전체보기</button>
-      <button data-view="faq"><span class="symbol">問</span> 자주 묻는 질문</button>
-      <button data-view="members"><span class="symbol">協</span> 협력물</button>
-      <button data-view="schedule"><span class="symbol">曆</span> 일정</button>
+      <button class="active" data-view="home"><span class="symbol">✨</span> 전체보기</button>
+      <button data-view="faq"><span class="symbol">❓</span> 자주 묻는 질문</button>
+      <button data-view="members"><span class="symbol">ꕥ</span> 협력물</button>
+      <button data-view="schedule"><span class="symbol">◈</span> 일정</button>
     </nav>
     <div class="side-line"></div>
-    <div class="contact-mini"><strong>CONTACT</strong><br>등록된 Q&A에 없는 내용은 메일 문의로 안내됩니다.</div>
+    <div class="contact-mini"><strong>CONTACT</strong><br><a id="contactEmailLink" href="mailto:2027jscafe@gmail.com">2027jscafe@gmail.com</a></div>
   </aside>
 
   <main class="card main">
@@ -38,9 +38,9 @@
       <p class="lead" id="mainDescription"></p>
       <div class="notice"><h3 id="noticeTitle"></h3><p id="noticeText"></p></div>
       <div class="quick-grid">
-        <button class="quick" data-go="faq"><div class="icon">問</div><b id="quickFaqTitle">자주 묻는 질문</b><small id="quickFaqDescription"></small></button>
-        <button class="quick" data-go="members"><div class="icon">協</div><b id="quickMembersTitle">협력물</b><small id="quickMembersDescription"></small></button>
-        <button class="quick" data-go="schedule"><div class="icon">曆</div><b id="quickScheduleTitle">일정</b><small id="quickScheduleDescription"></small></button>
+        <button class="quick" data-go="faq"><div class="icon">❓</div><b id="quickFaqTitle">자주 묻는 질문</b><small id="quickFaqDescription"></small></button>
+        <button class="quick" data-go="members"><div class="icon">ꕥ</div><b id="quickMembersTitle">협력물</b><small id="quickMembersDescription"></small></button>
+        <button class="quick" data-go="schedule"><div class="icon">◈</div><b id="quickScheduleTitle">일정</b><small id="quickScheduleDescription"></small></button>
       </div>
       <div class="section-title">최근 안내</div>
       <div class="post-list" id="postList"></div>
@@ -49,20 +49,20 @@
     <section class="view" id="view-faq">
       <div class="eyebrow">Frequently Asked Questions</div>
       <h1>자주 묻는 질문</h1>
-      <p class="lead">질문을 눌러 답변을 확인하세요. 챗봇도 이 Q&A를 기준으로 답합니다.</p>
+      <p class="lead" id="faqPageDescription">답변한 문의 내용 등을 확인할 수 있습니다.</p>
       <div class="filters" id="faqFilters"></div>
       <div class="faq-list" id="faqList"></div>
     </section>
 
     <section class="view" id="view-members">
       <div class="eyebrow">Collaboration</div><h1>협력물</h1>
-      <p class="lead">카페와 함께하는 협력 및 참여 정보를 안내합니다.</p>
+      <p class="lead" id="membersPageDescription">협력진과 협력물을 확인할 수 있습니다.</p>
       <div class="members" id="memberList"></div>
     </section>
 
     <section class="view" id="view-schedule">
       <div class="eyebrow">Timeline</div><h1>일정</h1>
-      <p class="lead">주요 일정을 시간순으로 확인할 수 있습니다.</p>
+      <p class="lead" id="schedulePageDescription">행사 진행 일정을 확인할 수 있습니다.</p>
       <div class="timeline" id="timeline"></div>
     </section>
 
@@ -76,9 +76,9 @@
 
 <div class="footer" id="footerText"></div>
 
-<button class="chat-fab" id="chatFab" aria-label="챗봇 열기">問</button>
+<button class="chat-fab" id="chatFab" aria-label="문의 챗봇 열기">문의</button>
 <div class="chatbox" id="chatbox">
-  <div class="chat-head"><div><b>문의 안내</b><small>등록된 Q&A를 기준으로 답변합니다.</small></div><button class="chat-close" id="chatClose">×</button></div>
+  <div class="chat-head"><div><b>문의 챗봇</b><small>등록된 Q&A를 기준으로 답변합니다.</small></div><button class="chat-close" id="chatClose">×</button></div>
   <div class="messages" id="messages"></div>
   <form class="chat-input" id="chatForm"><input id="chatInput" autocomplete="off" placeholder="예: 카페는 언제 열리나요?"><button type="submit">➤</button></form>
 </div>
