@@ -973,3 +973,91 @@ h1 {
     bottom: 74px;
   }
 }
+
+
+/* =========================================================
+   2026-08 final hero fix: 이미지 전체 표시, 잘림/페이드/겹침 제거
+   ========================================================= */
+.hero {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  position: relative;
+}
+
+.hero-image {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+.hero::after {
+  display: none !important;
+  content: none !important;
+}
+
+.shell {
+  margin-top: 18px !important;
+}
+
+/* 금색 → 푸른색 순서의 그라데이션 */
+.nav button:hover,
+.nav button.active {
+  background: linear-gradient(90deg,
+    rgba(216,187,115,.24) 0%,
+    rgba(131,152,201,.22) 100%) !important;
+}
+
+.notice {
+  background: linear-gradient(135deg,
+    rgba(255,248,229,.92) 0%,
+    rgba(233,240,252,.92) 100%) !important;
+}
+
+.quick {
+  background: linear-gradient(145deg,
+    rgba(255,250,237,.82) 0%,
+    rgba(242,246,253,.78) 100%) !important;
+}
+
+.quick:hover {
+  background: linear-gradient(135deg,
+    rgba(255,246,222,.96) 0%,
+    rgba(235,242,253,.96) 100%) !important;
+}
+
+.chat-fab {
+  background: linear-gradient(135deg,
+    rgba(255,246,222,.97) 0%,
+    rgba(236,242,253,.97) 100%) !important;
+}
+
+.timeline::before {
+  background: linear-gradient(to bottom,
+    rgba(216,187,115,.82) 0%,
+    var(--lav) 100%) !important;
+}
+
+@media (max-width: 800px) {
+  .hero,
+  .hero-image {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .shell {
+    margin-top: 10px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .shell {
+    margin-top: 6px !important;
+  }
+}

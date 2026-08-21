@@ -12,7 +12,7 @@ window.FALLBACK_DATA = {
     "main": {
       "eyebrow": "Welcome",
       "title": "三生佳約 안내 페이지",
-      "description": "2027년 12월 진행 예정인 카페의 공지, 자주 묻는 질문, 참여진 및 일정을 확인할 수 있습니다.",
+      "description": "2027년 12월 진행 예정인 카페의 공지, 자주 묻는 질문, 협력물 및 일정을 확인할 수 있습니다.",
       "noticeTitle": "✦ Main Notice",
       "noticeText": "카페는 2027년 12월 17일부터 12월 19일까지 홍대 인근에서 진행될 예정입니다. 방문객 입장은 추후 날짜·타임별 예약 폼을 통해 사전 예약을 받은 뒤 예약자에 한해 진행할 예정입니다.",
       "quickFaqTitle": "자주 묻는 질문",
@@ -71,8 +71,8 @@ window.FALLBACK_DATA = {
     },
     {
       "category": "문의",
-      "question": "Q&A에 없는 내용은 어디로 문의하나요?",
-      "answer": "등록된 Q&A에서 답을 찾지 못한 경우 2027jscafe@gmail.com으로 문의해주세요.",
+      "question": "질의응답에 없는 내용은 어디로 문의하나요?",
+      "answer": "등록된 질의응답에서 답을 찾지 못한 경우 2027jscafe@gmail.com으로 문의해주세요.",
       "keywords": [
         "메일",
         "이메일",

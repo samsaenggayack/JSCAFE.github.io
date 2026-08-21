@@ -129,7 +129,7 @@ content:
     label: 내용
     type: text
 - name: faq
-  label: Q&A
+  label: 질의응답
   type: file
   path: data/faq.json
   format: json
@@ -186,7 +186,7 @@ content:
     label: 날짜 (직접 입력)
     type: string
     required: false
-    description: '달력 선택 없이 직접 입력합니다. 예: 2027.12.18 / 2027년 12월 / 12월 중 / 미정'
+    description: '직접 입력하세요. 예: 2027.12.18 / 2027년 12월 / 12월 중 / 미정'
   - name: title
     label: 일정 제목
     type: string
