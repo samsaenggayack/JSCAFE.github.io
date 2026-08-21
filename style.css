@@ -1213,3 +1213,274 @@ h1 {
     display: none;
   }
 }
+
+
+/* =========================================================
+   행사 준비 진행 상황 / 장소 / 캘린더 위젯
+   ========================================================= */
+
+.home-widgets {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+  gap: 12px;
+  margin: 22px 0 27px;
+}
+
+.info-widget,
+.calendar-save-panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 249, 231, .72) 0%,
+    rgba(255, 255, 255, .88) 48%,
+    rgba(237, 243, 253, .82) 100%
+  );
+}
+
+.info-widget {
+  min-width: 0;
+  padding: 19px 18px;
+}
+
+.widget-topline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.widget-kicker {
+  margin-bottom: 5px;
+  color: #9a7b39;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .16em;
+}
+
+.info-widget h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.progress-count {
+  flex: 0 0 auto;
+  padding: 4px 8px;
+  border: 1px solid rgba(131, 152, 201, .18);
+  border-radius: 999px;
+  color: var(--lav-dark);
+  background: rgba(255,255,255,.62);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.progress-meter {
+  position: relative;
+  height: 4px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  background: rgba(131,152,201,.12);
+}
+
+.progress-meter span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--gold), var(--lav));
+  transition: width .35s ease;
+}
+
+.progress-list {
+  display: grid;
+  gap: 8px;
+}
+
+.progress-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.progress-item.done {
+  color: var(--lav-dark);
+}
+
+.progress-check {
+  display: inline-grid;
+  flex: 0 0 19px;
+  width: 19px;
+  height: 19px;
+  place-items: center;
+  border: 1px solid rgba(131,152,201,.25);
+  border-radius: 50%;
+  background: rgba(255,255,255,.72);
+  color: #aaa0a6;
+  font-size: 10px;
+}
+
+.progress-item.done .progress-check {
+  border-color: rgba(86,109,159,.35);
+  background: rgba(232,240,253,.85);
+  color: var(--lav-dark);
+}
+
+.place-status {
+  flex: 0 1 auto;
+  max-width: 48%;
+  padding: 4px 8px;
+  border: 1px solid rgba(216,187,115,.30);
+  border-radius: 999px;
+  color: #8d723b;
+  background: rgba(255,248,229,.72);
+  font-size: 9px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.place-area {
+  margin: 3px 0 7px;
+  color: var(--lav-dark);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -.025em;
+}
+
+.place-name {
+  margin-bottom: 5px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.place-address {
+  margin-bottom: 7px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.place-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.place-map-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  margin-top: 12px;
+  padding: 7px 12px;
+  border: 1px solid rgba(131,152,201,.24);
+  border-radius: 999px;
+  color: var(--lav-dark);
+  background: rgba(255,255,255,.72);
+  font-size: 10px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.place-map-btn:hover {
+  background: rgba(235,242,253,.95);
+}
+
+.widget-empty {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.calendar-save-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: -3px 0 25px;
+  padding: 16px 18px;
+}
+
+.calendar-save-copy {
+  min-width: 0;
+}
+
+.calendar-save-copy strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--lav-dark);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.calendar-save-copy small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.calendar-save-btn {
+  flex: 0 0 auto;
+  min-height: 40px;
+  padding: 9px 14px;
+  border: 1px solid rgba(131,152,201,.24);
+  border-radius: 999px;
+  color: var(--lav-dark);
+  background: rgba(255,255,255,.82);
+  font-size: 11px;
+  font-weight: 600;
+  transition: .18s ease;
+}
+
+.calendar-save-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(232,240,253,.96);
+}
+
+@media (max-width: 800px) {
+  .home-widgets {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    margin: 17px 0 22px;
+  }
+
+  .info-widget {
+    padding: 16px 15px;
+  }
+
+  .calendar-save-panel {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 11px;
+    padding: 15px;
+  }
+
+  .calendar-save-btn {
+    width: 100%;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .widget-topline {
+    gap: 8px;
+  }
+
+  .place-status {
+    max-width: 52%;
+    font-size: 8px;
+  }
+
+  .place-area {
+    font-size: 18px;
+  }
+}

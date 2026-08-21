@@ -1,7 +1,7 @@
 window.FALLBACK_DATA = {
   "site": {
     "siteTitle": "三生佳約",
-    "siteSubtitle": "Information & Archive",
+    "siteSubtitle": "2027 자하설영 CP 카페",
     "browserTitle": "三生佳約 ",
     "contactEmail": "2027jscafe@gmail.com",
     "heroImage": "assets/uploads/header.png",
@@ -113,12 +113,12 @@ window.FALLBACK_DATA = {
     {
       "date": "2027-12-18",
       "title": "행사 개최 1일차",
-      "desc": "三生佳約 카페 첫 번째 운영일입니다."
+      "desc": "三生佳約 카페 개최일입니다."
     },
     {
       "date": "2027-12-19",
       "title": "행사 개최 2일차",
-      "desc": "三生佳約 카페 두 번째이자 마지막 운영일입니다."
+      "desc": "三生佳約 카페 마지막 운영일입니다."
     }
   ],
   "posts": [
@@ -140,5 +140,35 @@ window.FALLBACK_DATA = {
       "date": "2027-12-18",
       "body": "날짜·타임별 예약 폼을 추후 받을 예정이며 예약자에 한해 입장 가능합니다."
     }
-  ]
+  ],
+  "progress": [
+    {
+      "title": "1차 수요조사",
+      "done": true
+    },
+    {
+      "title": "협력물 공개",
+      "done": false
+    },
+    {
+      "title": "예약폼 공개",
+      "done": false
+    },
+    {
+      "title": "상세 장소 공개",
+      "done": false
+    },
+    {
+      "title": "행사 개최",
+      "done": false
+    }
+  ],
+  "place": {
+    "status": "상세 장소 추후 공개",
+    "area": "홍대 인근",
+    "name": "",
+    "address": "",
+    "note": "정확한 장소와 주소는 추후 안내될 예정입니다.",
+    "mapUrl": ""
+  }
 };

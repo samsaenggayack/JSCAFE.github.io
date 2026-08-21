@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>三生佳約 · 안내 페이지</title>
-<link rel="stylesheet" href="style.css?v=20260822-clean-01">
+<link rel="stylesheet" href="style.css?v=20260822-widgets-01">
 </head>
 <body>
 
@@ -49,6 +49,37 @@
         <button class="quick" data-go="members"><b id="quickMembersTitle">협력물</b><small id="quickMembersDescription"></small></button>
         <button class="quick" data-go="schedule"><b id="quickScheduleTitle">일정</b><small id="quickScheduleDescription"></small></button>
       </div>
+
+      <div class="home-widgets">
+        <section class="info-widget progress-widget" aria-labelledby="progressWidgetTitle">
+          <div class="widget-topline">
+            <div>
+              <div class="widget-kicker">PROJECT STATUS</div>
+              <h3 id="progressWidgetTitle">행사 준비 진행 상황</h3>
+            </div>
+            <span class="progress-count" id="progressCount">0 / 0</span>
+          </div>
+          <div class="progress-meter" aria-hidden="true">
+            <span id="progressFill"></span>
+          </div>
+          <div class="progress-list" id="progressList"></div>
+        </section>
+
+        <section class="info-widget place-widget" aria-labelledby="placeWidgetTitle">
+          <div class="widget-topline">
+            <div>
+              <div class="widget-kicker">PLACE</div>
+              <h3 id="placeWidgetTitle">장소 안내</h3>
+            </div>
+            <span class="place-status" id="placeStatus">상세 장소 추후 공개</span>
+          </div>
+          <div class="place-area" id="placeArea">홍대 인근</div>
+          <div class="place-name" id="placeName" hidden></div>
+          <div class="place-address" id="placeAddress" hidden></div>
+          <p class="place-note" id="placeNote"></p>
+          <a class="place-map-btn" id="placeMapBtn" href="#" target="_blank" rel="noopener noreferrer" hidden>지도 보기 ↗</a>
+        </section>
+      </div>
       <div class="section-title">최근 안내</div>
       <div class="post-list" id="postList"></div>
     </section>
@@ -70,6 +101,15 @@
     <section class="view" id="view-schedule">
       <div class="eyebrow">타임라인</div><h1>일정</h1>
       <p class="lead" id="schedulePageDescription">행사 진행 일정을 확인할 수 있습니다.</p>
+
+      <div class="calendar-save-panel">
+        <div class="calendar-save-copy">
+          <div class="widget-kicker">CALENDAR</div>
+          <strong id="calendarRange">2027.12.18 — 12.19</strong>
+          <small>행사 이틀 일정을 내 캘린더에 저장할 수 있습니다.</small>
+        </div>
+        <button type="button" class="calendar-save-btn" id="calendarSaveBtn">＋ 일정 저장</button>
+      </div>
       <div class="timeline" id="timeline"></div>
     </section>
 
@@ -90,8 +130,8 @@
   <form class="chat-input" id="chatForm"><input id="chatInput" autocomplete="off" placeholder="예: 카페는 언제 열리나요?"><button type="submit">➤</button></form>
 </div>
 
-<script src="fallback-data.js?v=20260822-clean-01"></script>
-<script src="app.js?v=20260822-dday-fix-02"></script>
+<script src="fallback-data.js?v=20260822-widgets-01"></script>
+<script src="app.js?v=20260822-widgets-01"></script>
 
 <!-- 배경 눈내리기: magic-snowflakes -->
 <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>

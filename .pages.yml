@@ -183,6 +183,55 @@ content:
   - name: desc
     label: 소개
     type: text
+- name: progress
+  label: 행사 준비 진행사항
+  type: file
+  path: data/progress.json
+  format: json
+  list: true
+  operations:
+    delete: false
+  fields:
+  - name: title
+    label: 진행 항목
+    type: string
+    required: true
+  - name: done
+    label: 완료
+    type: boolean
+    default: false
+    description: 완료한 항목이면 이 토글을 켜주세요.
+- name: place
+  label: 장소 안내
+  type: file
+  path: data/place.json
+  format: json
+  operations:
+    delete: false
+  fields:
+  - name: status
+    label: 장소 공개 상태
+    type: string
+    description: '예: 상세 장소 추후 공개 / 장소 공개 완료'
+  - name: area
+    label: 지역
+    type: string
+    description: '예: 홍대 인근'
+  - name: name
+    label: 장소명
+    type: string
+    description: 장소 확정 전에는 비워두셔도 됩니다.
+  - name: address
+    label: 주소
+    type: string
+    description: 상세 주소가 공개된 뒤 입력하세요.
+  - name: note
+    label: 장소 안내 문구
+    type: text
+  - name: mapUrl
+    label: 지도 / 길찾기 링크
+    type: string
+    description: 비워두면 지도 보기 버튼은 표시되지 않습니다.
 - name: schedule
   label: 일정
   type: file
