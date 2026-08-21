@@ -53,7 +53,11 @@ function site(){
   if(C.accentDark) document.documentElement.style.setProperty("--lav-dark",C.accentDark);
   if(C.heroHeight) document.documentElement.style.setProperty("--hero-height",`${Number(C.heroHeight)}px`);
   if(C.backgroundColor) document.body.style.backgroundColor=C.backgroundColor;
-  hero.style.backgroundImage=`linear-gradient(to bottom,rgba(255,255,255,.03),rgba(247,246,244,.15)),url("${asset(C.heroImage||"assets/uploads/header.png")}")`;
+  const heroImageEl=document.getElementById("heroImage");
+  if(heroImageEl){
+    heroImageEl.src=asset(C.heroImage||"assets/uploads/header.png");
+    heroImageEl.alt=C.siteTitle||"三生佳約";
+  }
 }
 function showView(name){
   document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===`view-${name}`));
@@ -76,19 +80,16 @@ function members(){
   memberList.innerHTML=DATA.members.map(x=>`<div class="member"><div class="role">${esc(x.role)}</div><h3>${esc(x.name)}</h3><p>${esc(x.desc)}</p></div>`).join("");
 }
 
-function scheduleIsTbd(x){
-  return x?.dateStatus==="tbd" || x?.dateStatus==="미정" || !x?.date;
-}
 function scheduleLabel(x){
-  return scheduleIsTbd(x) ? "미정" : fmt(x.date);
-}
-function scheduleSortKey(x){
-  return scheduleIsTbd(x) ? "9999-99-99" : String(x.date||"");
+  const value=String(x?.date||"").trim();
+  if(!value) return "미정";
+  // 예전 ISO 형식 데이터는 보기 좋게 변환하고,
+  // 직접 입력한 텍스트는 그대로 표시합니다.
+  return /^\d{4}-\d{2}-\d{2}$/.test(value) ? fmt(value) : value;
 }
 
 function scheduleView(){
   timeline.innerHTML=[...DATA.schedule]
-    .sort((a,b)=>scheduleSortKey(a).localeCompare(scheduleSortKey(b)))
     .map(x=>`<div class="event"><div class="when">${esc(scheduleLabel(x))}</div><h3>${esc(x.title)}</h3><p>${esc(x.desc)}</p></div>`)
     .join("");
 }
@@ -96,9 +97,9 @@ function search(){
   const raw=globalSearch.value.trim(),q=norm(raw),out=[];showView("search");
   if(q){
     DATA.posts.forEach(x=>{if(norm([x.type,x.title,x.date,x.body].join(" ")).includes(q))out.push({type:"NOTICE",title:x.title,text:x.body})});
-    DATA.faq.forEach(x=>{const k=x.keywords||[],h=norm([x.category,x.question,x.answer,...k].join(" "));if(h.includes(q)||k.some(v=>q.includes(norm(v))))out.push({type:"Q&A",title:x.question,text:x.answer})});
+    DATA.faq.forEach(x=>{const k=x.keywords||[],h=norm([x.category,x.question,x.answer,...k].join(" "));if(h.includes(q)||k.some(v=>q.includes(norm(v))))out.push({type:"질의응답",title:x.question,text:x.answer})});
     DATA.members.forEach(x=>{if(norm([x.role,x.name,x.desc].join(" ")).includes(q))out.push({type:"협력물",title:x.name,text:`${x.role||""} · ${x.desc||""}`})});
-    DATA.schedule.forEach(x=>{if(norm([x.date,x.dateStatus,x.title,x.desc,"미정"].join(" ")).includes(q))out.push({type:"일정",title:x.title,text:`${scheduleLabel(x)} · ${x.desc||""}`})});
+    DATA.schedule.forEach(x=>{if(norm([x.date,x.title,x.desc,"미정"].join(" ")).includes(q))out.push({type:"일정",title:x.title,text:`${scheduleLabel(x)} · ${x.desc||""}`})});
   }
   searchSummary.textContent=raw?`"${raw}" 검색 결과 ${out.length}건`:"검색어를 입력해주세요.";
   searchResults.innerHTML=out.length?out.map(x=>`<div class="result"><div class="type">${esc(x.type)}</div><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></div>`).join(""):`<div class="empty">${raw?"일치하는 내용을 찾지 못했습니다.":"상단 검색창에 검색어를 입력해주세요."}</div>`;
@@ -111,8 +112,8 @@ function score(input,item){
 }
 function chat(){
   chatFab.onclick=()=>chatbox.classList.toggle("open");chatClose.onclick=()=>chatbox.classList.remove("open");
-  addMsg("안녕하세요. 등록된 Q&A를 기준으로 안내해드려요.\n예: “카페 장소는 어디인가요?”");
-  chatForm.onsubmit=e=>{e.preventDefault();const val=chatInput.value.trim();if(!val)return;addMsg(val,"user");chatInput.value="";setTimeout(()=>{const r=DATA.faq.map(x=>({x,score:score(val,x)})).sort((a,b)=>b.score-a.score)[0];if(r&&r.score>=3)addMsg(`${r.x.answer}\n\n참고 Q&A · ${r.x.question}`);else{const em=DATA.site.contactEmail||"";const sub=encodeURIComponent(`[${DATA.site.siteTitle||"사이트"} 문의]`),body=encodeURIComponent(`문의 내용:\n${val}\n\n`);addMsg(`등록된 안내에서 해당 질문의 답을 찾지 못했습니다.<br><br>자세한 문의는 <a class="mail-link" href="mailto:${esc(em)}?subject=${sub}&body=${body}">${esc(em)}</a> 로 부탁드립니다.`,"bot",true)}},200)};
+  addMsg("안녕하세요. 등록된 질의응답을 기준으로 안내해드려요.\n예: “카페 장소는 어디인가요?”");
+  chatForm.onsubmit=e=>{e.preventDefault();const val=chatInput.value.trim();if(!val)return;addMsg(val,"user");chatInput.value="";setTimeout(()=>{const r=DATA.faq.map(x=>({x,score:score(val,x)})).sort((a,b)=>b.score-a.score)[0];if(r&&r.score>=3)addMsg(`${r.x.answer}\n\n참고 질의응답 · ${r.x.question}`);else{const em=DATA.site.contactEmail||"";const sub=encodeURIComponent(`[${DATA.site.siteTitle||"사이트"} 문의]`),body=encodeURIComponent(`문의 내용:\n${val}\n\n`);addMsg(`등록된 안내에서 해당 질문의 답을 찾지 못했습니다.<br><br>자세한 문의는 <a class="mail-link" href="mailto:${esc(em)}?subject=${sub}&body=${body}">${esc(em)}</a> 로 부탁드립니다.`,"bot",true)}},200)};
 }
 function init(){
   site();renderPosts();filters();renderFaq();members();scheduleView();chat();

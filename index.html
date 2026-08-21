@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<section class="hero" id="hero"></section>
+<section class="hero" id="hero"><img id="heroImage" class="hero-image" src="assets/uploads/header.png" alt="三生佳約"></section>
 
 <div class="shell">
   <aside class="card sidebar">
@@ -21,7 +21,7 @@
       <button data-view="schedule"><span class="symbol">四</span> 일정</button>
     </nav>
     <div class="side-line"></div>
-    <div class="contact-mini"><strong>CONTACT</strong><br><a id="contactEmailLink" href="mailto:2027jscafe@gmail.com">2027jscafe@gmail.com</a></div>
+    <div class="contact-mini"><strong>메일</strong><br><a id="contactEmailLink" href="mailto:2027jscafe@gmail.com">2027jscafe@gmail.com</a></div>
   </aside>
 
   <main class="card main">
@@ -38,9 +38,9 @@
       <p class="lead" id="mainDescription"></p>
       <div class="notice"><h3 id="noticeTitle"></h3><p id="noticeText"></p></div>
       <div class="quick-grid">
-        <button class="quick" data-go="faq"><div class="icon">❓</div><b id="quickFaqTitle">자주 묻는 질문</b><small id="quickFaqDescription"></small></button>
-        <button class="quick" data-go="members"><div class="icon">ꕥ</div><b id="quickMembersTitle">협력물</b><small id="quickMembersDescription"></small></button>
-        <button class="quick" data-go="schedule"><div class="icon">◈</div><b id="quickScheduleTitle">일정</b><small id="quickScheduleDescription"></small></button>
+        <button class="quick" data-go="faq"><b id="quickFaqTitle">자주 묻는 질문</b><small id="quickFaqDescription"></small></button>
+        <button class="quick" data-go="members"><b id="quickMembersTitle">협력물</b><small id="quickMembersDescription"></small></button>
+        <button class="quick" data-go="schedule"><b id="quickScheduleTitle">일정</b><small id="quickScheduleDescription"></small></button>
       </div>
       <div class="section-title">최근 안내</div>
       <div class="post-list" id="postList"></div>
@@ -78,7 +78,7 @@
 
 <button class="chat-fab" id="chatFab" aria-label="문의 챗봇 열기">❓</button>
 <div class="chatbox" id="chatbox">
-  <div class="chat-head"><div><b>문의 챗봇</b><small>등록된 Q&A를 기준으로 답변합니다.</small></div><button class="chat-close" id="chatClose">×</button></div>
+  <div class="chat-head"><div><b>문의 챗봇</b><small>등록된 질의응답을 기준으로 답변합니다.</small></div><button class="chat-close" id="chatClose">×</button></div>
   <div class="messages" id="messages"></div>
   <form class="chat-input" id="chatForm"><input id="chatInput" autocomplete="off" placeholder="예: 카페는 언제 열리나요?"><button type="submit">➤</button></form>
 </div>

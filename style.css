@@ -45,18 +45,29 @@ button, input { font: inherit; }
 button { cursor: pointer; }
 
 .hero {
-  height: var(--hero-height);
-  background-image: none;
-  background-size: cover;
-  background-position: center;
   position: relative;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  background: var(--bg);
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
 }
 
 .hero::after {
   content: "";
   position: absolute;
-  inset: auto 0 0;
-  height: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 56px;
+  pointer-events: none;
   background: linear-gradient(to bottom, transparent, var(--bg));
 }
 
@@ -699,8 +710,14 @@ h1 {
 
 @media (max-width: 800px) {
   .hero {
-    height: 260px;
-    background-size: auto 260px;
+    height: auto;
+    min-height: 0;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 
   .shell {
@@ -825,4 +842,134 @@ h1 {
 .result p,
 .contact-mini {
   letter-spacing: -0.02em;
+}
+
+
+/* 중앙 바로가기 카드 장식 아이콘 제거 */
+.quick .icon {
+  display: none !important;
+}
+
+/* 메일 표시 */
+.contact-mini strong {
+  color: var(--lav-dark);
+  letter-spacing: .04em;
+}
+
+.quick {
+  padding-top: 22px;
+}
+.quick b {
+  margin-top: 0;
+}
+
+
+/* 모바일 최적화 */
+@media (max-width: 800px) {
+  .shell {
+    width: calc(100% - 20px);
+    margin-top: -14px;
+    gap: 10px;
+  }
+
+  .sidebar {
+    border-radius: 14px;
+    padding: 8px;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: flex-start;
+    scrollbar-width: none;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav button {
+    flex: 0 0 auto;
+    font-size: 13px;
+    padding: 9px 10px;
+  }
+
+  .main {
+    padding: 18px 14px 24px;
+    min-height: 0;
+  }
+
+  .topbar {
+    gap: 7px;
+    margin-bottom: 20px;
+  }
+
+  .search-wrap {
+    min-width: 0;
+    padding: 0 10px;
+  }
+
+  .search-wrap input {
+    font-size: 12px;
+  }
+
+  .mini-btn {
+    flex: 0 0 auto;
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 23px;
+    line-height: 1.35;
+  }
+
+  .notice {
+    padding: 17px;
+  }
+
+  .quick {
+    padding: 17px;
+  }
+
+  .chatbox {
+    left: 10px;
+    right: 10px;
+    bottom: 78px;
+    width: auto;
+    height: min(520px, calc(100vh - 100px));
+  }
+
+  .chat-fab {
+    right: 14px;
+    bottom: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero::after {
+    height: 28px;
+  }
+
+  .shell {
+    width: calc(100% - 12px);
+    margin-top: -8px;
+  }
+
+  .nav button {
+    font-size: 12px;
+  }
+
+  .main {
+    padding: 15px 12px 22px;
+  }
+
+  .quick-grid {
+    gap: 8px;
+  }
+
+  .chatbox {
+    left: 6px;
+    right: 6px;
+    bottom: 74px;
+  }
 }

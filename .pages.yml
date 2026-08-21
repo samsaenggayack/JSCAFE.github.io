@@ -182,22 +182,11 @@ content:
   operations:
     delete: false
   fields:
-  - name: dateStatus
-    label: 날짜 상태
-    type: select
-    description: 정확한 날짜를 모르면 ‘미정’을 선택하세요.
-    options:
-      values:
-      - name: confirmed
-        label: 날짜 확정
-      - name: tbd
-        label: 미정
   - name: date
-    label: 날짜
-    type: date
-    description: 날짜 상태가 ‘미정’이면 비워두어도 됩니다.
-    options:
-      format: yyyy-MM-dd
+    label: 날짜 (직접 입력)
+    type: string
+    required: false
+    description: '달력 선택 없이 직접 입력합니다. 예: 2027.12.18 / 2027년 12월 / 12월 중 / 미정'
   - name: title
     label: 일정 제목
     type: string
