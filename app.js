@@ -115,7 +115,35 @@ function chat(){
   addMsg("안녕하세요. 등록된 질의응답을 기준으로 안내해드려요.\n예: “카페 장소는 어디인가요?”");
   chatForm.onsubmit=e=>{e.preventDefault();const val=chatInput.value.trim();if(!val)return;addMsg(val,"user");chatInput.value="";setTimeout(()=>{const r=DATA.faq.map(x=>({x,score:score(val,x)})).sort((a,b)=>b.score-a.score)[0];if(r&&r.score>=3)addMsg(`${r.x.answer}\n\n참고 질의응답 · ${r.x.question}`);else{const em=DATA.site.contactEmail||"";const sub=encodeURIComponent(`[${DATA.site.siteTitle||"사이트"} 문의]`),body=encodeURIComponent(`문의 내용:\n${val}\n\n`);addMsg(`등록된 안내에서 해당 질문의 답을 찾지 못했습니다.<br><br>자세한 문의는 <a class="mail-link" href="mailto:${esc(em)}?subject=${sub}&body=${body}">${esc(em)}</a> 로 부탁드립니다.`,"bot",true)}},200)};
 }
+
+function renderDday(){
+  const raw=String(DATA?.site?.eventDate||"2027-12-17").trim();
+  const countEl=document.getElementById("ddayCount");
+  const dateEl=document.getElementById("ddayDate");
+  if(!countEl || !dateEl) return;
+
+  const m=raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if(!m){
+    countEl.textContent="날짜 미정";
+    dateEl.textContent=raw || "미정";
+    return;
+  }
+
+  const y=Number(m[1]), mo=Number(m[2]), d=Number(m[3]);
+  const target=Date.UTC(y,mo-1,d);
+  const now=new Date();
+  const today=Date.UTC(now.getFullYear(),now.getMonth(),now.getDate());
+  const diff=Math.round((target-today)/86400000);
+
+  if(diff>0) countEl.textContent=`D-${diff}`;
+  else if(diff===0) countEl.textContent="D-DAY";
+  else countEl.textContent=`D+${Math.abs(diff)}`;
+
+  dateEl.textContent=`${m[1]}.${m[2]}.${m[3]}`;
+}
+
 function init(){
+  renderDday();
   site();renderPosts();filters();renderFaq();members();scheduleView();chat();
   document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>showView(b.dataset.view));
   document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>showView(b.dataset.go));

@@ -1125,3 +1125,75 @@ h1 {
     rgba(236, 242, 253, .95) 100%
   ) !important;
 }
+
+
+/* =========================================================
+   D-DAY WIDGET
+   ========================================================= */
+.dday-widget {
+  position: relative;
+  overflow: hidden;
+  margin: 0 2px 18px;
+  padding: 16px 14px 15px;
+  border: 1px solid rgba(131, 152, 201, .20);
+  border-radius: 13px;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 247, 222, .76) 0%,
+    rgba(248, 248, 246, .82) 46%,
+    rgba(232, 240, 253, .86) 100%
+  );
+}
+
+.dday-widget::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #d8bb73, #8398c9);
+}
+
+.dday-kicker {
+  margin-bottom: 3px;
+  color: #9a7b39;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .18em;
+}
+
+.dday-count {
+  color: var(--lav-dark);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.03em;
+}
+
+.dday-date {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .06em;
+}
+
+@media (max-width: 800px) {
+  .dday-widget {
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 8px 13px;
+    min-width: 112px;
+  }
+
+  .dday-count {
+    font-size: 18px;
+  }
+
+  .dday-date {
+    font-size: 9px;
+  }
+
+  .dday-kicker {
+    display: none;
+  }
+}

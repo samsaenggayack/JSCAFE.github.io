@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>三生佳約 · 안내 페이지</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20260822-dday-snow-01">
 </head>
 <body>
 
@@ -21,6 +21,14 @@
       <button data-view="schedule"><span class="symbol">四</span> 일정</button>
     </nav>
     <div class="side-line"></div>
+    
+    <div class="side-line"></div>
+    <section class="dday-widget" aria-label="카페 디데이">
+      <div class="dday-kicker">D-DAY</div>
+      <div class="dday-count" id="ddayCount">계산 중</div>
+      <div class="dday-date" id="ddayDate">2027.12.17</div>
+    </section>
+
     <div class="contact-mini"><strong>메일</strong><br><a id="contactEmailLink" href="mailto:2027jscafe@gmail.com">2027jscafe@gmail.com</a></div>
   </aside>
 
@@ -83,7 +91,23 @@
   <form class="chat-input" id="chatForm"><input id="chatInput" autocomplete="off" placeholder="예: 카페는 언제 열리나요?"><button type="submit">➤</button></form>
 </div>
 
-<script src="fallback-data.js"></script>
-<script src="app.js"></script>
+<script src="fallback-data.js?v=20260822-dday-snow-01"></script>
+<script src="app.js?v=20260822-dday-snow-01"></script>
+
+<!-- 배경 눈내리기: magic-snowflakes -->
+<script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
+<script>
+(function () {
+  if (!window.Snowflakes) return;
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  window.samSaengSnow = new Snowflakes({
+    color: "#99bde8",
+    count: 10,
+    minOpacity: 0.2,
+    maxOpacity: 0.5
+  });
+})();
+</script>
+
 </body>
 </html>
