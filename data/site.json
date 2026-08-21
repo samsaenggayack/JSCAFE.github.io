@@ -1,6 +1,6 @@
 {
   "siteTitle": "三生佳約",
-  "siteSubtitle": "2027 자하설영 CP 카페",
+  "siteSubtitle": "Information & Archive",
   "browserTitle": "三生佳約 ",
   "contactEmail": "2027jscafe@gmail.com",
   "heroImage": "assets/uploads/header.png",
@@ -21,5 +21,6 @@
     "quickScheduleTitle": "일정",
     "quickScheduleDescription": "행사 진행 일정을 확인할 수 있습니다."
   },
-  "eventDate": "2027-12-18"
+  "eventDate": "2027-12-18",
+  "eventEndDate": "2027-12-19"
 }
